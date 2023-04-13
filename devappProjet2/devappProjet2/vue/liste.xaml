@@ -1,0 +1,57 @@
+﻿<Window x:Class="devappProjet2.vue.liste"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:devappProjet2.vue"
+        mc:Ignorable="d"
+        Title="liste" Height="450" Width="800">
+    <Grid Background="LightGray">
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Liste de données</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="5*"></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2">
+            <ListView.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </ListView.Resources>
+        </ListView>
+
+        <Button Content="Voir plus" Grid.Column="3" Grid.Row="2" Height="40" HorizontalAlignment="Center" Width="180" VerticalAlignment="Top" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Supprimer" Grid.Column="3" Grid.Row="2" Height="40" HorizontalAlignment="Center" Width="180" VerticalAlignment="Center" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Créer un nouveau calcul" Grid.Column="3" Grid.Row="2" Height="40" HorizontalAlignment="Center" Width="180" VerticalAlignment="Bottom" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>
