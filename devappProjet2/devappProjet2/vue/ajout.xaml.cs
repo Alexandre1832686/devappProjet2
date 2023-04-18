@@ -1,6 +1,8 @@
-﻿using System;
+﻿using devappProjet2.vue_model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,9 +21,21 @@ namespace devappProjet2.vue
     /// </summary>
     public partial class ajout : Window
     {
+        AjoutVM vm;
         public ajout()
         {
             InitializeComponent();
+            vm = new AjoutVM();
+        }
+
+        private void Enregistrer(object sender, RoutedEventArgs e)
+        {
+            //vm.Enregistrer();
+        }
+
+        private void Quit(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

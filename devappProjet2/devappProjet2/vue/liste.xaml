@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="liste" Height="450" Width="800">
     <Grid Background="LightGray">
-        <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Liste de données</TextBlock>
         <Grid.ColumnDefinitions>
             <ColumnDefinition ></ColumnDefinition>
             <ColumnDefinition Width="5*"></ColumnDefinition>
@@ -21,6 +20,8 @@
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Liste de données</TextBlock>
 
 
         <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2">
@@ -45,7 +46,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Content="Créer un nouveau calcul" Grid.Column="3" Grid.Row="2" Height="40" HorizontalAlignment="Center" Width="180" VerticalAlignment="Bottom" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15">
+        <Button Content="Créer un nouveau calcul" Grid.Column="3" Grid.Row="2" Height="40" HorizontalAlignment="Center" Width="180" VerticalAlignment="Bottom" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15" Click="Creer">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>

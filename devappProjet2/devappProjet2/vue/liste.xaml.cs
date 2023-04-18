@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using devappProjet2.vue_model;
 
 namespace devappProjet2.vue
 {
@@ -22,6 +23,12 @@ namespace devappProjet2.vue
         public liste()
         {
             InitializeComponent();
+        }
+
+        private void Creer(object sender, RoutedEventArgs e)
+        {
+            ajout a = new ajout();
+            a.Show();
         }
     }
 }

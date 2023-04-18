@@ -4,26 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:devappProjet2.vue"
+        xmlns:viewmodele="clr-namespace:devappProjet2.vue_model" 
+        d:DataContext="{d:DesignInstance Type=viewmodele:AjoutVM}"
         mc:Ignorable="d"
         Title="ajout" Height="600" Width="650">
+
     <Grid Background="LightGray">
-        <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Ajout d'un calcul</TextBlock>
-        
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Ajout d'un calcul</TextBlock>
 
 
         <Border Grid.Column="1" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="10" Padding="8,20">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                    
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8*"/>
+
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
@@ -35,20 +37,36 @@
                     
                 </Grid.RowDefinitions>
 
-                <TextBlock FontFamily="comic sans ms" Grid.Row="0" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Capital total :" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Row="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Intérêt totaux :" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Row="2" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="fréquence :" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms"  Grid.Row="3" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="450 000,00$" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms"  Grid.Row="4" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="478 922,79$" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Row="5" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Mensuelle" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Row="0" FontSize="15" HorizontalAlignment="Left" Text="Nom :" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Row="1" FontSize="15" HorizontalAlignment="Left" Text="Prenom :" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Row="2" FontSize="15" HorizontalAlignment="Left" Text="Capital total :" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Row="3" FontSize="15" HorizontalAlignment="Left" Text="Taux d'intérêts annuel :" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Row="4" FontSize="15" HorizontalAlignment="Left" Text="Periode :" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Row="5" FontSize="15" HorizontalAlignment="Left" Text="Fréquence :" ></TextBlock>
 
-                <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Coût total :" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Durée :" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Taux d'intérêts :"></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="1 028 922,79$" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="25 ans (300 mois)" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="6,27%"></TextBlock>
+                <TextBox FontFamily="comic sans ms" Grid.Column="2" Grid.Row="0" FontSize="15" HorizontalAlignment="Left" Width="200" Margin="2" VerticalAlignment="Top" Text="{Binding Nom, Mode=OneWay}"></TextBox>
+                <TextBox FontFamily="comic sans ms" Grid.Column="2" Grid.Row="1" FontSize="15" HorizontalAlignment="Left" Width="200" Margin="2" VerticalAlignment="Top" Text="{Binding Prenom, Mode=OneWay}"></TextBox>
+                <TextBox FontFamily="comic sans ms" Grid.Column="2" Grid.Row="2" FontSize="15" HorizontalAlignment="Left" Width="200" Margin="2" VerticalAlignment="Top" Text="{Binding TotalCapital, Mode=OneWay}"></TextBox>
+                <TextBox FontFamily="comic sans ms" Grid.Column="2" Grid.Row="3" FontSize="15" HorizontalAlignment="Left" Width="200" Margin="2" VerticalAlignment="Top" Text="{Binding TauxInteret, Mode=OneWay}"></TextBox>
+                <TextBox FontFamily="comic sans ms" Grid.Column="2" Grid.Row="4" FontSize="15" HorizontalAlignment="Left" Width="200" Margin="2" VerticalAlignment="Top" Text="{Binding Periode, Mode=OneWay}"></TextBox>
+                <ComboBox FontFamily="comic sans ms" Grid.Column="2" Grid.Row="5" FontSize="15" HorizontalAlignment="Left" Width="200" Margin="2" VerticalAlignment="Top" Text="{Binding Frequence}"></ComboBox>
+
+                
             </Grid>
         </Border>
+        <Button Content="Enregistrer"  Grid.Row="2" Height="40" HorizontalAlignment="right" Width="180" VerticalAlignment="Center" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15" Margin="30,0" Click="Enregistrer">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button Content="Retour"  Grid.Row="2" Height="40" HorizontalAlignment="Left" Width="180" VerticalAlignment="Center" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15" Margin="30,0" Click="Quit">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>
