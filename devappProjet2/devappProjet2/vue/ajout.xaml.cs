@@ -30,7 +30,7 @@ namespace devappProjet2.vue
 
         private void Enregistrer(object sender, RoutedEventArgs e)
         {
-            //vm.Enregistrer();
+            vm.Enregistrer();
         }
 
         private void Quit(object sender, RoutedEventArgs e)

@@ -37,7 +37,7 @@ namespace devappProjet2.vue_model
 
         public AjoutVM() 
         {
-            //Enregistrer = new CommandeRelais(Enregistrer_Execute, Enregistrer_CanExecute);
+            Enregistrer = new CommandeRelais(Enregistrer_Execute, Enregistrer_CanExecute);
 
         }
         
