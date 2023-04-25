@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:devappProjet2.vue"
+        xmlns:vuemodele="clr-namespace:devappProjet2.vue_model"
+        d:DataContext="{d:DesignInstance Type=vuemodele:ListVM}"
         mc:Ignorable="d"
         Title="liste" Height="450" Width="800">
     <Grid Background="LightGray">
@@ -24,7 +26,7 @@
         <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Liste de données</TextBlock>
 
 
-        <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2">
+        <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="2" ItemsSource="{Binding Liste}">>
             <ListView.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="15"/>

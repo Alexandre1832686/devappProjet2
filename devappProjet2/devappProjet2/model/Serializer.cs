@@ -1,4 +1,5 @@
-﻿using System;
+﻿using devappProjet2.vue_model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -11,20 +12,17 @@ namespace devappProjet2.model
 {
     internal class Serializer
     {
-        private static List<calcul> lesCalculs = new List<calcul>();
-
-
         #region private functions
 
         private static void writeCalcul(calcul c)
         {
-            lesCalculs.Add(c);
+            ListeCalculs.listeCalculs.Add(c);
             try
             {
                 System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<calcul>));
                 var path = System.IO.Directory.GetCurrentDirectory() + "//Serialization.xml";
                 System.IO.FileStream file = System.IO.File.Create(path);
-                writer.Serialize(file, lesCalculs);
+                writer.Serialize(file, ListeCalculs.listeCalculs);
                 file.Close();
             }
             catch (Exception e)
@@ -33,32 +31,30 @@ namespace devappProjet2.model
             }
         }
 
-        private static List<calcul> readCalcul()
+        private static ObservableCollection<calcul> readCalcul()
         {
-        List<calcul> retour = new List<calcul>();
+            ObservableCollection<calcul> retour = new ObservableCollection<calcul>();
             try
             {
-                System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<calcul>));
+                System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(ObservableCollection<calcul>));
                     
-                using (Stream reader = new FileStream("SerializationMembreDepense.xml", FileMode.Open))
+                using (Stream reader = new FileStream("Serialization.xml", FileMode.Open))
                 {
-                    retour = (List<calcul>)writer.Deserialize(reader);
+                    retour = (ObservableCollection<calcul>)writer.Deserialize(reader);
                     reader.Close();
                 }
             }
             catch (InvalidOperationException e)
             {
-                var path = System.IO.Directory.GetCurrentDirectory() + "//SerializationMembreDepense.xml";
+                var path = System.IO.Directory.GetCurrentDirectory() + "//Serialization.xml";
                 System.IO.FileStream file = System.IO.File.Create(path);
                 file.Close();
-                return null;
             }
             catch (FileNotFoundException e)
             {
-                var path = System.IO.Directory.GetCurrentDirectory() + "//SerializationMembreDepense.xml";
+                var path = System.IO.Directory.GetCurrentDirectory() + "//Serialization.xml";
                 System.IO.FileStream file = System.IO.File.Create(path);
                 file.Close();
-                return null;
             }
 
             return retour;
@@ -78,14 +74,19 @@ namespace devappProjet2.model
         }
 
         
-        public static List<calcul> GetToutLesCalculs()
+        public static ListeCalculs GetToutLesCalculs(ListeCalculs liste)
         {
-            if (lesCalculs.Count == 0)
-                lesCalculs = readCalcul();
+            if(liste == null)
+            {
+                liste = new ListeCalculs();
+            }
 
-            return lesCalculs;
+            liste = readCalcul();
+
+            return liste;
         }
         #endregion
 
+        
     }
 }

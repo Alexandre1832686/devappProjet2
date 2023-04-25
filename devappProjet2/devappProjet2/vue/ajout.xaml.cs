@@ -22,15 +22,19 @@ namespace devappProjet2.vue
     public partial class ajout : Window
     {
         AjoutVM vm;
+        
         public ajout()
         {
             InitializeComponent();
             vm = new AjoutVM();
+            this.DataContext = vm;
+            
         }
 
         private void Enregistrer(object sender, RoutedEventArgs e)
         {
-            vm.Enregistrer();
+            
+            this.Close();
         }
 
         private void Quit(object sender, RoutedEventArgs e)

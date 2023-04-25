@@ -20,9 +20,12 @@ namespace devappProjet2.vue
     /// </summary>
     public partial class liste : Window
     {
+        ListVM vm;
         public liste()
         {
             InitializeComponent();
+            vm= new ListVM();
+            this.DataContext = vm;
         }
 
         private void Creer(object sender, RoutedEventArgs e)
