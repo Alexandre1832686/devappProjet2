@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         xmlns:vuemodele="clr-namespace:devappProjet2.vue_model"
         d:DataContext="{d:DesignInstance Type=vuemodele:voirVM}" 
-        Title="voir" Height="650" Width="600">
+        Title="voir" Height="650" Width="900">
+
+
+    
     
     <Grid Background="LightGray">
         
@@ -23,12 +26,15 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Calcul pour</TextBlock>
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="5" FontFamily="comic sans ms" FontSize="40" FontWeight="ExtraBold" Foreground="RoyalBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5">Informations complètes</TextBlock>
 
 
         <Border Grid.Column="1" Grid.Row="1" Margin="10" Background="White" BorderBrush="Black" BorderThickness="3" CornerRadius="10" Padding="8,20">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -40,38 +46,56 @@
                 <TextBlock FontFamily="comic sans ms" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Intérêt totaux :" ></TextBlock>
                 <TextBlock FontFamily="comic sans ms" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="fréquence :" ></TextBlock>
 
-                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="450 000,00$" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="478 922,79$" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Mensuelle" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Calcul.TotalCapital, Mode=TwoWay}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding InteretTotal, Mode=TwoWay}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Calcul.Frequence, Mode=TwoWay}" ></TextBlock>
 
                 <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Coût total :" ></TextBlock>
                 <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Durée :" ></TextBlock>
                 <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Taux d'intérêts :"></TextBlock>
 
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="1 028 922,79$" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="25 ans (300 mois)" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="6,27%"></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding CoutTotal, Mode=TwoWay}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Calcul.Periode, Mode=TwoWay}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Calcul.TauxInteret, Mode=TwoWay}"></TextBlock>
+
+                <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Calcul.Nom, Mode=TwoWay}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Calcul.Prenom, Mode=TwoWay}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Mensualite, Mode=TwoWay}" ></TextBlock>
+
+                <TextBlock FontFamily="comic sans ms" Grid.Column="6" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Nom :"></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="6" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Prenom :"></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="6" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Mensualite :"></TextBlock>
             </Grid>
         </Border>
         
-        <ListView Grid.Column="1" Grid.Row="2"  BorderBrush="Black" BorderThickness="3" Margin="10">
+        <ListView Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness="3" Margin="10" ItemsSource="{Binding Paiements}">
             <ListView.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </ListView.Resources>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Mois" Width="100" DisplayMemberBinding="{Binding Mois}"/>
+                    <GridViewColumn Header="Paiement" Width="100" DisplayMemberBinding="{Binding Paiement}"/>
+                    <GridViewColumn Header="Capital" Width="100" DisplayMemberBinding="{Binding Capital}"/>
+                    <GridViewColumn Header="Interet" Width="100" DisplayMemberBinding="{Binding Interet}"/>
+                    <GridViewColumn Header="Balance" Width="100" DisplayMemberBinding="{Binding Balance}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
 
 
 
 
-        <Button Content="Fermer" Grid.Row="3" Height="40" HorizontalAlignment="Right" Width="180" VerticalAlignment="Center" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15" Margin="15,0">
+        <Button Content="Fermer"  Grid.Row="4" Height="40" HorizontalAlignment="Right" Width="180" VerticalAlignment="Center" Background="RoyalBlue" BorderBrush="Black" BorderThickness="2" Foreground="White" FontFamily="comic sans ms" FontWeight="bold" FontSize="15" Margin="10"   Click="Button_Click_1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
-        
+
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using devappProjet2.vue_model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
@@ -23,17 +24,19 @@ namespace devappProjet2.vue
     {
         AjoutVM vm;
         
-        public ajout()
+        public ajout(ListVM listvm)
         {
             InitializeComponent();
-            vm = new AjoutVM();
+            vm = new AjoutVM(listvm);
             this.DataContext = vm;
             
         }
 
         private void Enregistrer(object sender, RoutedEventArgs e)
         {
-            
+            Message m = new Message("Enregistré avec succès!");
+            m.Show();
+
             this.Close();
         }
 

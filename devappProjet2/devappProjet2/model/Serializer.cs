@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,12 +15,11 @@ namespace devappProjet2.model
     {
         #region private functions
 
-        private static void writeCalcul(calcul c)
+        private static void writeCalcul()
         {
-            ListeCalculs.listeCalculs.Add(c);
             try
             {
-                System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<calcul>));
+                System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(ObservableCollection<calcul>));
                 var path = System.IO.Directory.GetCurrentDirectory() + "//Serialization.xml";
                 System.IO.FileStream file = System.IO.File.Create(path);
                 writer.Serialize(file, ListeCalculs.listeCalculs);
@@ -29,9 +29,11 @@ namespace devappProjet2.model
             {
                 Console.WriteLine(e.Message);
             }
+
+            readCalcul();
         }
 
-        private static ObservableCollection<calcul> readCalcul()
+        private static void readCalcul()
         {
             ObservableCollection<calcul> retour = new ObservableCollection<calcul>();
             try
@@ -57,7 +59,10 @@ namespace devappProjet2.model
                 file.Close();
             }
 
-            return retour;
+            if (retour != null)
+                ListeCalculs.listeCalculs = retour;
+            else
+                ListeCalculs.listeCalculs = new ObservableCollection<calcul>();
         }
 
         #endregion
@@ -68,25 +73,48 @@ namespace devappProjet2.model
                 return false;
             else
             {
-                writeCalcul(c);
+                ListeCalculs.listeCalculs.Add(c);
+                writeCalcul();
                 return true;
             }
         }
 
         
-        public static ListeCalculs GetToutLesCalculs(ListeCalculs liste)
+        public static void GetToutLesCalculs()
         {
-            if(liste == null)
-            {
-                liste = new ListeCalculs();
-            }
-
-            liste = readCalcul();
-
-            return liste;
+           readCalcul();
         }
         #endregion
+        public static bool Supprimer(calcul c)
+        {
+            bool verif = false;
+            if (c == null) return false;
 
+            foreach(calcul cal in ListeCalculs.listeCalculs)
+            {
+                if(IsEqualsTo(c,cal))
+                {
+                    ListeCalculs.listeCalculs.Remove(cal);
+                    verif = true;
+                    break;
+                }
+            }
+
+            writeCalcul();
+            return verif;
+        }
         
+
+        private static bool IsEqualsTo(calcul c1, calcul c2)
+        {
+            bool verif = true;
+            if(c1.TauxInteret != c2.TauxInteret) verif = false;
+            if (c1.Periode != c2.Periode) verif = false;
+            if (c1.Prenom != c2.Prenom) verif = false;
+            if (c1.Nom != c2.Nom) verif = false;
+            if (c1.TotalCapital != c2.TotalCapital) verif = false;
+            if (c1.Frequence != c2.Frequence) verif = false;
+            return verif;
+        }
     }
 }

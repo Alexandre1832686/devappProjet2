@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,28 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using devappProjet2.model;
-using devappProjet2.vue_model;
 
 namespace devappProjet2.vue
 {
     /// <summary>
-    /// Logique d'interaction pour voir.xaml
+    /// Logique d'interaction pour Message.xaml
     /// </summary>
-    public partial class voir : Window
+    public partial class Message : Window
     {
-        public voir(calcul c)
+        public Message(string message)
         {
-           
-            voirVM vm = new voirVM();
-            this.DataContext = vm;
-            vm.Calcul = c;
             InitializeComponent();
+            Mes.Text = message;
         }
 
-  
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

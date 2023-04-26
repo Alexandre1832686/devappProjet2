@@ -30,7 +30,7 @@ namespace devappProjet2.vue
 
         private void Creer(object sender, RoutedEventArgs e)
         {
-            ajout a = new ajout();
+            ajout a = new ajout(vm);
             a.Show();
         }
     }

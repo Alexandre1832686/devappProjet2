@@ -14,6 +14,7 @@ namespace devappProjet2.vue_model
 {
     internal class AjoutVM : INotifyPropertyChanged
     {
+        ListVM vmList = new ListVM();
         private float _totalCapital, _tauxInteret;
         private int _periode;
         private string? _frequence, _nom, _prenom;
@@ -34,14 +35,12 @@ namespace devappProjet2.vue_model
         }
         #endregion
 
-
-        public AjoutVM() 
+        public AjoutVM(ListVM vm) 
         {
             Enregistrer = new CommandeRelais(Enregistrer_Execute, Enregistrer_CanExecute);
-
+            vmList = vm;
         }
         
-
         public float TotalCapital
         {
             get { return _totalCapital; }
@@ -116,9 +115,12 @@ namespace devappProjet2.vue_model
         {
             calcul c = new calcul(TotalCapital, TauxInteret, Periode, Frequence, Nom, Prenom);
             Serializer.EnregistrerNouveauCalcul(c);
+            vmList.Liste = ListeCalculs.listeCalculs;
         }
         public bool Enregistrer_CanExecute(object parameter)
         {
+            if(Prenom=="" || Nom == "" || TotalCapital <= 0 || TauxInteret<= 0 || TauxInteret > 30 || Periode <2) return false;
+
             return true;
         }
     }
