@@ -14,6 +14,7 @@ namespace devappProjet2.vue_model
         double _interetTotal;
         double _coutTotal;
         double _mensualite;
+        double _totalCapital;
         int nbPaiementTotal;
         int nbMensualiteParAnnee;
 
@@ -30,7 +31,7 @@ namespace devappProjet2.vue_model
                 _calcul = value;
                 InteretTotal = (value.TotalCapital * value.TauxInteret / 100);
                 CoutTotal = InteretTotal + value.TotalCapital;
-
+                TotalCapital = value.TotalCapital;
                 
                 
 
@@ -48,24 +49,31 @@ namespace devappProjet2.vue_model
                 }
 
                 nbPaiementTotal = ((value.Periode / 12) * nbMensualiteParAnnee);
-
-                Mensualite = (CoutTotal * (value.TauxInteret/100) / (double)nbMensualiteParAnnee) / (1 - MathF.Pow((float)(1 + ((value.TauxInteret/100) / (double)nbMensualiteParAnnee)), nbPaiementTotal*-1));
+                tauxPeriode = ((value.TauxInteret / 100) / (double)nbMensualiteParAnnee);
+                Mensualite = (value.TotalCapital * tauxPeriode) / (1 - Math.Pow((float)(1 + tauxPeriode), nbPaiementTotal*-1));
                 CreateListPaiements();
             }
             
         }
         public double InteretTotal
         {
-            get { return Math.Round(_interetTotal); }
+            get { return _interetTotal; }
             set
             {
                 _interetTotal = value;
             }
         }
+        private double tauxPeriode { get; set; }
+
+        public double TotalCapital
+        {
+            get { return _totalCapital; }
+            set { _totalCapital = value; }
+        }
 
         public double CoutTotal
         {
-            get { return Math.Round(_coutTotal,2); }
+            get { return _coutTotal; }
             set
             {
                 _coutTotal = value;
@@ -73,7 +81,7 @@ namespace devappProjet2.vue_model
         }
         public double Mensualite
         {
-            get { return Math.Round(_mensualite); }
+            get { return _mensualite; }
             set
             {
                 _mensualite = value;
@@ -89,23 +97,18 @@ namespace devappProjet2.vue_model
                 _paiements= value;
             }
         }
-
+        double balance { get; set; }
         private void CreateListPaiements()
         {
             Paiements= new List<Paiements>();
-
+            balance=TotalCapital;
             for(int i=0;i<nbPaiementTotal;i++)
             {
-                double total = 0;
-
-                for(int j=0;j<i;j++)
-                {
-                    total += Paiements[j].Paiement;
-                }
-
-                total += Mensualite;
-
-                Paiements p = new Paiements(i,Mensualite,Mensualite/2,Mensualite/2,CoutTotal-total);
+                double PaiementInteret = balance * tauxPeriode;
+                double PaiementCapital = Mensualite - PaiementInteret;
+                balance = balance - PaiementCapital;
+                
+                Paiements p = new Paiements(i+1,Mensualite,PaiementCapital,PaiementInteret,balance);
 
                 Paiements.Add(p);
             }
