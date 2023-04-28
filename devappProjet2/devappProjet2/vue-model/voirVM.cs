@@ -49,8 +49,9 @@ namespace devappProjet2.vue_model
                 }
 
                 nbPaiementTotal = ((value.Periode / 12) * nbMensualiteParAnnee);
-                tauxPeriode = ((value.TauxInteret / 100) / (double)nbMensualiteParAnnee);
-                Mensualite = (value.TotalCapital * tauxPeriode) / (1 - Math.Pow((float)(1 + tauxPeriode), nbPaiementTotal*-1));
+                tauxPeriode = ((value.TauxInteret / 100) / nbMensualiteParAnnee);
+
+                Mensualite = (value.TotalCapital * tauxPeriode) / (1 - Math.Pow((1 + tauxPeriode), -nbPaiementTotal));
                 CreateListPaiements();
             }
             
@@ -102,6 +103,7 @@ namespace devappProjet2.vue_model
         {
             Paiements= new List<Paiements>();
             balance=TotalCapital;
+
             for(int i=0;i<nbPaiementTotal;i++)
             {
                 double PaiementInteret = balance * tauxPeriode;

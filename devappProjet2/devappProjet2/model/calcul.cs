@@ -8,14 +8,14 @@ namespace devappProjet2.model
 {
     public class calcul
     {
-        float totalCapital, tauxInteret;
+        double totalCapital, tauxInteret;
         int periode;
         string? frequence,nom, prenom;
         
 
         public calcul() { }
 
-        public calcul(float totalCapital, float tauxInteret, int periode, string? frequence, string? nom, string? prenom)
+        public calcul(double totalCapital, double tauxInteret, int periode, string? frequence, string? nom, string? prenom)
         {
             TotalCapital = totalCapital;
             TauxInteret = tauxInteret;
@@ -25,12 +25,12 @@ namespace devappProjet2.model
             Prenom = prenom;
         }
 
-        public float TotalCapital
+        public double TotalCapital
         {
             get { return totalCapital; }
             set { totalCapital = value; }
         }
-        public float TauxInteret
+        public double TauxInteret
         {
             get { return tauxInteret; }
             set { tauxInteret = value; }

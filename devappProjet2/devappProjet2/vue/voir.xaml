@@ -78,10 +78,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Mois" Width="100" DisplayMemberBinding="{Binding Mois}"/>
-                    <GridViewColumn Header="Paiement" Width="100" DisplayMemberBinding="{Binding Paiement,StringFormat=N2}"/>
-                    <GridViewColumn Header="Capital" Width="100" DisplayMemberBinding="{Binding Capital,StringFormat=N2}"/>
-                    <GridViewColumn Header="Interet" Width="100" DisplayMemberBinding="{Binding Interet,StringFormat=N2}"/>
-                    <GridViewColumn Header="Balance" Width="100" DisplayMemberBinding="{Binding Balance,StringFormat=N2}"/>
+                    <GridViewColumn Header="Paiement" Width="100" DisplayMemberBinding="{Binding Paiement,StringFormat=c}"/>
+                    <GridViewColumn Header="Capital" Width="100" DisplayMemberBinding="{Binding Capital,StringFormat=c}"/>
+                    <GridViewColumn Header="Interet" Width="100" DisplayMemberBinding="{Binding Interet,StringFormat=c}"/>
+                    <GridViewColumn Header="Balance" Width="100" DisplayMemberBinding="{Binding Balance,StringFormat=c}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -15,7 +15,7 @@ namespace devappProjet2.vue_model
     internal class AjoutVM : INotifyPropertyChanged
     {
         ListVM vmList = new ListVM();
-        private float _totalCapital, _tauxInteret;
+        private double _totalCapital, _tauxInteret;
         private int _periode;
         private string? _frequence, _nom, _prenom;
 
@@ -41,7 +41,7 @@ namespace devappProjet2.vue_model
             vmList = vm;
         }
         
-        public float TotalCapital
+        public double TotalCapital
         {
             get { return _totalCapital; }
             set
@@ -51,7 +51,7 @@ namespace devappProjet2.vue_model
             }
         }
 
-        public float TauxInteret
+        public double TauxInteret
         {
             get { return _tauxInteret; }
             set
