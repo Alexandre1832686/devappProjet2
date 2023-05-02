@@ -110,7 +110,7 @@ namespace devappProjet2.vue_model
                 double PaiementCapital = Mensualite - PaiementInteret;
                 balance = balance - PaiementCapital;
                 
-                Paiements p = new Paiements(i+1,Mensualite,PaiementCapital,PaiementInteret,balance);
+                Paiements p = new Paiements(i+1,Mensualite,PaiementCapital,PaiementInteret,Math.Abs(balance));
 
                 Paiements.Add(p);
             }

@@ -22,6 +22,8 @@ namespace devappProjet2.model
                 System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(ObservableCollection<calcul>));
                 var path = System.IO.Directory.GetCurrentDirectory() + "//Serialization.xml";
                 System.IO.FileStream file = System.IO.File.Create(path);
+                ObservableCollection < calcul > obs = new ObservableCollection<calcul> (ListeCalculs.listeCalculs.OrderBy(o => o.Prenom));
+                ListeCalculs.listeCalculs = obs;
                 writer.Serialize(file, ListeCalculs.listeCalculs);
                 file.Close();
             }

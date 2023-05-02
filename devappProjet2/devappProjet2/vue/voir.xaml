@@ -46,21 +46,21 @@
                 <TextBlock FontFamily="comic sans ms" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Intérêt totaux :" ></TextBlock>
                 <TextBlock FontFamily="comic sans ms" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="fréquence :" ></TextBlock>
 
-                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Calcul.TotalCapital, Mode=TwoWay,StringFormat=N2}" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding InteretTotal, Mode=TwoWay,StringFormat=N2}" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Calcul.Frequence, Mode=TwoWay,StringFormat=N2}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Calcul.TotalCapital, Mode=TwoWay,StringFormat=c}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding InteretTotal, Mode=TwoWay,StringFormat=c}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="1" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Calcul.Frequence, Mode=TwoWay}" ></TextBlock>
 
                 <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Coût total :" ></TextBlock>
                 <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Durée :" ></TextBlock>
                 <TextBlock FontFamily="comic sans ms" Grid.Column="3" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="Taux d'intérêts :"></TextBlock>
 
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left"  Text="{Binding CoutTotal, Mode=TwoWay,StringFormat=N2}" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Calcul.Periode, Mode=TwoWay,StringFormat=N2}" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Calcul.TauxInteret, Mode=TwoWay,StringFormat=N2}"></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left"  Text="{Binding CoutTotal, Mode=TwoWay,StringFormat=c}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Calcul.Periode, Mode=TwoWay}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="4" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Calcul.TauxInteret, Mode=TwoWay,StringFormat=c}"></TextBlock>
 
                 <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Calcul.Nom, Mode=TwoWay}" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Calcul.Prenom, Mode=TwoWay}" ></TextBlock>
-                <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Mensualite, Mode=TwoWay,StringFormat={}{0:C}}" ></TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="{Binding Calcul.Prenom}" > </TextBlock>
+                <TextBlock FontFamily="comic sans ms" Grid.Column="7" FontSize="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Mensualite, Mode=TwoWay,StringFormat=c}" ></TextBlock>
 
                 <TextBlock FontFamily="comic sans ms" Grid.Column="6" FontSize="15" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Nom :"></TextBlock>
                 <TextBlock FontFamily="comic sans ms" Grid.Column="6" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Prenom :"></TextBlock>
