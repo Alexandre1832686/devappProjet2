@@ -68,7 +68,7 @@
             </Grid>
         </Border>
         
-        <ListView Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness="3" Margin="10" ItemsSource="{Binding Paiements}">
+        <ListView Grid.Column="1" Grid.Row="2" BorderBrush="Black" BorderThickness="3" Margin="10" ItemsSource="{Binding Calcul.Paiements}">
             <ListView.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>

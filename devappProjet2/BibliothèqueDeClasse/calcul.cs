@@ -8,11 +8,11 @@ namespace BibliothèqueDeClasse
 {
     public class calcul
     {
-        double InteretTotal, CoutTotal;
+        double interetTotal, CoutTotal;
         double totalCapital, tauxInteret;
-        int periode,nbMensualiteParAnnee;
-        string frequence,nom, prenom;
-        int nbPaiementTotal;
+        int periode, nbMensualiteParAnnee;
+        string frequence, nom, prenom;
+        double nbPaiementTotal;
         double tauxPeriode, mensualite;
         List<Paiements> paiements;
         double Balance;
@@ -30,13 +30,8 @@ namespace BibliothèqueDeClasse
             Nom = nom;
             Prenom = prenom;
 
-
-
             InteretTotal = (totalCapital * tauxInteret / 100);
             CoutTotal = InteretTotal + totalCapital;
-            
-
-
 
             if (frequence == "Mensuel")
             {
@@ -51,14 +46,19 @@ namespace BibliothèqueDeClasse
                 NbMensualiteParAnnee = 6;
             }
 
-            NbPaiementTotal = ((periode / 12) * NbMensualiteParAnnee);
+            NbPaiementTotal = ((periode / (double)12) * NbMensualiteParAnnee);
             TauxPeriode = ((tauxInteret / 100) / NbMensualiteParAnnee);
 
             Mensualite = (totalCapital * TauxPeriode) / (1 - Math.Pow((1 + TauxPeriode), -NbPaiementTotal));
+
             CreateListPaiements();
         }
 
-
+        public double InteretTotal
+        {
+            get { return interetTotal; }
+            set { interetTotal = value; }
+        }
         public List<Paiements> Paiements
         {
             get { return paiements; }
@@ -74,7 +74,7 @@ namespace BibliothèqueDeClasse
             get { return tauxPeriode; }
             set { tauxPeriode = value; }
         }
-        public int NbPaiementTotal
+        public double NbPaiementTotal
         {
             get { return nbPaiementTotal; }
             set { nbPaiementTotal = value; }
@@ -126,21 +126,21 @@ namespace BibliothèqueDeClasse
 
         }
 
-    private void CreateListPaiements()
-    {
-        Paiements = new List<Paiements>();
-        Balance = TotalCapital;
-
-        for (int i = 0; i < nbPaiementTotal; i++)
+        private void CreateListPaiements()
         {
-            double PaiementInteret = Balance * tauxPeriode;
-            double PaiementCapital = Mensualite - PaiementInteret;
-            Balance = Balance - PaiementCapital;
+            Paiements = new List<Paiements>();
+            Balance = TotalCapital;
 
-            Paiements p = new Paiements(i + 1, Mensualite, PaiementCapital, PaiementInteret, Math.Abs(Balance));
+            for (int i = 0; i < nbPaiementTotal; i++)
+            {
+                double PaiementInteret = Balance * tauxPeriode;
+                double PaiementCapital = Mensualite - PaiementInteret;
+                Balance = Balance - PaiementCapital;
 
-            Paiements.Add(p);
+                Paiements p = new Paiements(i + 1, Mensualite, PaiementCapital, PaiementInteret, Math.Abs(Balance));
+
+                Paiements.Add(p);
+            }
         }
     }
-}
 }
