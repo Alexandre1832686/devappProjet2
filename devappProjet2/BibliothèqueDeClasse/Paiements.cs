@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace devappProjet2.model
+namespace BibliothèqueDeClasse
 {
     public class Paiements
     {

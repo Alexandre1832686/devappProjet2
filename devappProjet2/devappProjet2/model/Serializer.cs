@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using BibliothèqueDeClasse;
 
 namespace devappProjet2.model
 {

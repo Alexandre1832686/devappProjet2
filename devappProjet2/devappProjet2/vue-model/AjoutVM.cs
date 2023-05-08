@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using devappProjet2.model;
 using devappProjet2.vue;
+using BibliothèqueDeClasse;
 
 namespace devappProjet2.vue_model
 {

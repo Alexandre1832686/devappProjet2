@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using devappProjet2.model;
 using devappProjet2.vue_model;
+using BibliothèqueDeClasse;
 
 namespace devappProjet2.vue
 {

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using devappProjet2.model;
 using devappProjet2.vue;
+using BibliothèqueDeClasse;
 
 namespace devappProjet2.vue_model
 {
@@ -63,8 +64,9 @@ namespace devappProjet2.vue_model
 
         public void VoirPlus_Execute(object parameter)
         {
-            voir voir = new voir(Calcul);
-            voir.Show();
+            
+           voir voir = new voir(Calcul);
+           voir.Show();
         }
         public bool VoirPlus_CanExecute(object parameter)
         {
@@ -111,7 +113,12 @@ namespace devappProjet2.vue_model
 
         public calcul Calcul
         {
-            get { return calcul; }
+            get {
+                if (calcul == null)
+                    return new calcul();
+                else
+                    return calcul; 
+            }
             set
             {
                 calcul = value;
